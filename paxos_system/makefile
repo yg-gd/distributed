@@ -1,0 +1,16 @@
+#
+CC=gcc
+CFLAGS=-pthread
+LDFLAGS=
+SERV_SOURCES=server.c switch.c functions.c msg_queue.c
+CLIENT_SOURCES=client.c
+SERV_OBJECTS=$(SERV_SOURCES:.c=.o)
+CLIENT_OBJECTS=$(CLIENT_SOURCES:.c=.o)
+SERV_EXEC=serv
+CLIENT_EXEC=client
+
+$(SERV_EXEC): $(SERV_SOURCES)
+	$(CC) $(CFLAGS) $(SERV_SOURCES) -o $@
+
+$(CLIENT_EXEC): $(CLIENT_SOURCES)
+	$(CC) $(CFLAGS) $(CLIENT_SOURCES) -o $@
